@@ -1,26 +1,20 @@
-const epxpress = require("express")
-const User = require("../model/User.model")
-
-
-const router = epxpress.Router()
-
+const express = require("express")
+const { login, signup } = require("../controller/user.controller")
+const router = express.Router()
 
 router.get("/user", (req, res) => {
-    res.status(200).send("all user")
-})
-
-router.post("/login", async (req, res) => {
-    const data = req.body
-    console.log(data)
-    try {
-        // const user = await User.create(data)
-        // res.send(user)
-    } catch (err) {
-        console.log(err)
-    }
-    res.status(200).send(data)
+    res.status(200).send("response from user")
 })
 
 
+router.post("/user/login", login)
+router.post("/user/signup", signup)
+router.patch("/user/:id", () => {
+
+})
+
+router.delete("/user/:id", () => { }
+
+)
 
 module.exports = router
